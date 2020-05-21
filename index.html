@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>My Notes</title>
+    <link rel="icon" href="logo.png" type="image/icon type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+    *{
+        box-sizing: border-box;
+    }    
+    
+    body{
+        background-color: rgb(199, 197, 197);
+        padding: 0px;
+    }
+
+    h2{
+        font-weight: bold;
+        text-align: center;
+        margin: 0px;
+        color: red;
+    }
+
+    #input-div{
+        width: 100%;
+    }        
+    
+    #output-div{
+        width: 100%;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    #clear-btn{
+        height: 30px;
+        width: 80px;
+        cursor: pointer;
+        border-radius: 10px;
+        border: 1px solid black;
+    }  
+
+    #clear-btn:hover{
+        height: 30px;
+        width: 80px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #logo-img{
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background-image: url(logo.png);
+        background-size: cover;
+    }
+
+    </style>
+</head>
+<body>
+
+    <h2>P.S Jewellers</h2>
+    <hr><hr>
+    <div id="input-div">
+        <table width="100%" cellspacing="5px" cellpadding="2px">
+            <tr>
+                <td width="50%">Amount</td>
+                <td><input type="number" placeholder=" Initial Amount" width="100%" oninput="camount()" id="camount"></td>
+            </tr>
+            <tr>
+                <td width="50%">Rate</td>
+                <td><input type="number" placeholder=" Interest Rate" width="100%" oninput="crate()" id="crate"></td>
+            </tr>
+            <tr>
+                <td width="50%">Entry Date</td>
+                <td><input type="date" style="width: 100%" oninput="centry()" id="centry"></td>
+            </tr>
+            <tr>
+                <td width="50%">Exit Date</td>
+                <td><input type="date" style="width: 100%" oninput="cexit()" id="cexit"></td>
+            </tr>
+        </table>
+        <br>
+        <div id="output-div">
+            <table width="100%"> 
+                <tr>
+                    <td width="35%">Initial Amount</td>
+                    <th width="10%">-</th>
+                    <td><span id="oamount"></span></td>
+                </tr>
+                <tr>
+                    <td width="35%">Interest Rate</td>
+                    <th width="10%">-</th>
+                    <td><span id="orate"></span></td>
+                </tr>
+                <tr>
+                    <td width="35%">Entry Date</td>
+                    <th width="10%">-</th>
+                    <td><span id="oentry"></span></td>
+                </tr>
+                <tr>
+                    <td width="35%">Exit Date</td>
+                    <th width="10%">-</th>
+                    <td><span id="oexit"></span></td>
+                </tr>
+                <tr>
+                    <td width="35%">Total Days</td>
+                    <th width="10%">-</th>
+                    <td><span id="odays"></span></td>
+                </tr>
+                <tr>
+                    <td width="35%">Total Interest</td>
+                    <th width="10%">-</th>
+                    <td><span id="oti"></span></td>
+                </tr>
+                <tr>
+                    <td width="35%">Final Amount</td>
+                    <th width="10%">-</th>
+                    <td><span id="ofa"></span></td>
+                </tr>
+            </table>
+        </div>
+   
+
+        <div style="width: fit-content; margin: 0 auto; padding:5px">
+            <button id="clear-btn" onclick="location.reload();">Clear</button>
+        </div>
+
+    
+
+    </div>
+    <hr><hr>
+    <div id="logo-img">
+
+    </div>
+    <hr>
+    <div style="width: fit-content; margin: 0 auto;">
+        Developed By :- <b><font color="red" size="3px">Mayank Kumar Khurmai</font></b>
+    </div>
+    <hr>
+
+    
+
+    <script>
+
+        function camount()
+        {
+            document.getElementById("oamount").innerHTML = document.getElementById("camount").value;
+        }
+
+        function crate()
+        {
+            document.getElementById("orate").innerHTML = document.getElementById("crate").value;
+        }
+
+        function odays()
+        {
+            var date1 = new Date(document.getElementById("centry").value);
+            var date2 = new Date(document.getElementById("cexit").value);
+            var diff = (Math.floor((Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) - Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()) ) /(1000 * 60 * 60 * 24)))+1;
+            document.getElementById("odays").innerHTML = diff;
+            
+            var p = document.getElementById("camount").value;
+            var r = document.getElementById("crate").value;
+            var i = ((p/100)*(r)*diff)/30;
+            document.getElementById("oti").innerHTML = i;
+            document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
+        }
+
+        function centry()
+        {
+            var edate = new Date(document.getElementById("centry").value);
+            var a = edate.getDate();
+            var b = edate.toLocaleString('default', { month: 'short' });
+            var c = edate.getFullYear();
+            document.getElementById("oentry").innerHTML = a +"-"+ b +"-"+ c;
+        }
+
+        function cexit()
+        {
+            var edate = new Date(document.getElementById("cexit").value);
+            var a = edate.getDate();
+            var b = edate.toLocaleString('default', { month: 'short' });
+            var c = edate.getFullYear();
+            document.getElementById("oexit").innerHTML = a +"-"+ b +"-"+ c;
+            odays();
+        }
+    
+    </script>
+</body>
+</html>
