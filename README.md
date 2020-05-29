@@ -1,7 +1,6 @@
 # Android-Loan-Interest-calculator
 Android-Loan-Interest-calculator
 
-Link :- https://drive.google.com/file/d/1cANDVK86hcjQfXN99gEFmcSdTXhz372X/view?usp=sharing
 
 ---------By--------
 
