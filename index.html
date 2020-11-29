@@ -42,6 +42,7 @@
         cursor: pointer;
         border-radius: 10px;
         border: 1px solid black;
+        outline: none;
     }  
 
     #clear-btn:hover, #calc-btn:hover{
@@ -49,6 +50,7 @@
         width: 80px;
         font-weight: bold;
         cursor: pointer;
+        outline: none;
     }
 
     #logo-img{
@@ -71,11 +73,11 @@
         <table width="100%" cellspacing="5px" cellpadding="2px">
             <tr>
                 <td width="50%">Amount</td>
-                <td><input type="number" placeholder=" Initial Amount" width="100%" oninput="camount()" id="camount"></td>
+                <td><input type="number" placeholder=" Initial Amount" width="100%" oninput="camount()" id="camount" value="2500"></td>
             </tr>
             <tr>
                 <td width="50%">Rate</td>
-                <td><input type="number" placeholder=" Interest Rate" width="100%" oninput="crate()" id="crate"></td>
+                <td><input type="number" placeholder=" Interest Rate" width="100%" oninput="crate()" id="crate" value="3"></td>
             </tr>
             <tr>
                 <td width="50%">Entry Date</td>
@@ -188,6 +190,7 @@
             // Get Difference Between Dates
             var diff = (Math.floor((Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) - Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()) ) /(1000 * 60 * 60 * 24)))+1;
             
+            diff = 366;
 
             // Calculating According to Year and Date
             if(diff>0 && diff<=30)
@@ -201,7 +204,7 @@
                 document.getElementById("oti").innerHTML = i;
                 document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
             }
-            else if(diff>30 && diff<365)
+            else if(diff>30 && diff<=365)
             {
                 document.getElementById("odays").innerHTML = diff + " Days";
                 var p = document.getElementById("camount").value;
@@ -212,13 +215,15 @@
                 document.getElementById("oti").innerHTML = i;
                 document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
             }
-            else if(diff>365 && diff<730)
+            else if(diff>365 && diff<=730)
             {
+                diff = diff-365;
                 document.getElementById("odays").innerHTML = "1 Year " + diff + " Days";
                 var p = document.getElementById("camount").value;
                 var r = document.getElementById("crate").value;
 
-                var i = ((p/100)*(r)*diff)/30;
+                var i = ((p/100)*(r)*365)/30;       // For 1 Year
+            //    i = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
 
                 document.getElementById("oti").innerHTML = i;
                 document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
