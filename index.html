@@ -142,7 +142,7 @@
     </div>
     <hr>
     <div style="width: fit-content; margin: 0 auto;">
-        Developed By :- <b><font color="red" size="3px">Mayank Kumar Khurmai</font></b>
+        Developed By :- <b><font color="red" size="3px">Mayank Khurmai</font></b>
     </div>
     <hr>
 
@@ -190,7 +190,18 @@
             
 
             // Calculating According to Year and Date
-            if(diff>0 && diff<365)
+            if(diff>0 && diff<=30)
+            {
+                document.getElementById("odays").innerHTML = diff + " Days" + " (<font color='red'>Full Month</font>)";
+                var p = document.getElementById("camount").value;
+                var r = document.getElementById("crate").value;
+
+                var i = ((p/100)*(r)*30)/30;
+
+                document.getElementById("oti").innerHTML = i;
+                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
+            }
+            else if(diff>30 && diff<365)
             {
                 document.getElementById("odays").innerHTML = diff + " Days";
                 var p = document.getElementById("camount").value;
