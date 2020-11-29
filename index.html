@@ -195,26 +195,35 @@
                 document.getElementById("odays").innerHTML = diff + " Days";
                 var p = document.getElementById("camount").value;
                 var r = document.getElementById("crate").value;
+
+                var i = ((p/100)*(r)*diff)/30;
+
+                document.getElementById("oti").innerHTML = i;
+                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
             }
             else if(diff>365 && diff<730)
             {
                 document.getElementById("odays").innerHTML = "1 Year " + diff + " Days";
                 var p = document.getElementById("camount").value;
                 var r = document.getElementById("crate").value;
+
+                var i = ((p/100)*(r)*diff)/30;
+
+                document.getElementById("oti").innerHTML = i;
+                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
             }
             else
             {
                 document.getElementById("odays").innerHTML = diff;
                 var p = document.getElementById("camount").value;
                 var r = document.getElementById("crate").value;
-            }
-            
 
+                var i = ((p/100)*(r)*diff)/30;
+
+                document.getElementById("oti").innerHTML = i;
+                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
+            }         
             
-            
-            var i = ((p/100)*(r)*diff)/30;
-            document.getElementById("oti").innerHTML = i;
-            document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
         }
     
     </script>
