@@ -36,7 +36,7 @@
         border: 3px solid black;
     }
 
-    #clear-btn{
+    #clear-btn, #calc-btn{
         height: 30px;
         width: 80px;
         cursor: pointer;
@@ -44,7 +44,7 @@
         border: 1px solid black;
     }  
 
-    #clear-btn:hover{
+    #clear-btn:hover, #calc-btn:hover{
         height: 30px;
         width: 80px;
         font-weight: bold;
@@ -129,7 +129,7 @@
    
 
         <div style="width: fit-content; margin: 0 auto; padding:5px">
-            <button id="clear-btn" onclick="location.reload();">Calculate</button>
+            <button id="calc-btn" onclick="final_calculate();">Calculate</button>
             <button id="clear-btn" onclick="location.reload();">Clear</button>
         </div>
 
@@ -160,20 +160,6 @@
             document.getElementById("orate").innerHTML = document.getElementById("crate").value;
         }
 
-        function odays()
-        {
-            var date1 = new Date(document.getElementById("centry").value);
-            var date2 = new Date(document.getElementById("cexit").value);
-            var diff = (Math.floor((Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) - Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()) ) /(1000 * 60 * 60 * 24)))+1;
-            document.getElementById("odays").innerHTML = diff;
-            
-            var p = document.getElementById("camount").value;
-            var r = document.getElementById("crate").value;
-            var i = ((p/100)*(r)*diff)/30;
-            document.getElementById("oti").innerHTML = i;
-            document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
-        }
-
         function centry()
         {
             var edate = new Date(document.getElementById("centry").value);
@@ -190,7 +176,40 @@
             var b = edate.toLocaleString('default', { month: 'short' });
             var c = edate.getFullYear();
             document.getElementById("oexit").innerHTML = a +"-"+ b +"-"+ c;
-            odays();
+        }
+
+        
+
+        function final_calculate()
+        {
+            var date1 = new Date(document.getElementById("centry").value);
+            var date2 = new Date(document.getElementById("cexit").value);
+
+            // Get Difference Between Dates
+            var diff = (Math.floor((Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) - Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()) ) /(1000 * 60 * 60 * 24)))+1;
+            
+
+            // Calculating According to Year and Date
+            if(diff>0 && diff<365)
+            {
+                document.getElementById("odays").innerHTML = diff + " Days";
+            }
+            else if(diff>365 && diff<730)
+            {
+                document.getElementById("odays").innerHTML = "1 Year " + diff + " Days";
+            }
+            else
+            {
+                document.getElementById("odays").innerHTML = diff;
+            }
+            
+
+            
+            var p = document.getElementById("camount").value;
+            var r = document.getElementById("crate").value;
+            var i = ((p/100)*(r)*diff)/30;
+            document.getElementById("oti").innerHTML = i;
+            document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
         }
     
     </script>
