@@ -190,7 +190,7 @@
             // Get Difference Between Dates
             var diff = (Math.floor((Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) - Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()) ) /(1000 * 60 * 60 * 24)))+1;
             
-            diff = 366;
+            diff = 730;
 
             // Calculating According to Year and Date
             if(diff>0 && diff<=30)
@@ -219,25 +219,25 @@
             {
                 diff = diff-365;
                 document.getElementById("odays").innerHTML = "1 Year " + diff + " Days";
-                var p = document.getElementById("camount").value;
-                var r = document.getElementById("crate").value;
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
 
                 var i = ((p/100)*(r)*365)/30;       // For 1 Year
-            //    i = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
-
-                document.getElementById("oti").innerHTML = i;
-                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
+                var fi = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
+                document.getElementById("oti").innerHTML = Math.floor(i+fi);
+                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i + fi));
             }
             else
             {
-                document.getElementById("odays").innerHTML = diff;
-                var p = document.getElementById("camount").value;
-                var r = document.getElementById("crate").value;
+                diff = diff-365;
+                document.getElementById("odays").innerHTML = "1 Year " + diff + " Days";
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
 
-                var i = ((p/100)*(r)*diff)/30;
-
-                document.getElementById("oti").innerHTML = i;
-                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
+                var i = ((p/100)*(r)*365)/30;       // For 1 Year
+                var fi = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
+                document.getElementById("oti").innerHTML = Math.floor(i+fi);
+                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i + fi));
             }         
             
         }
