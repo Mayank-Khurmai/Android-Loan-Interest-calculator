@@ -12,12 +12,29 @@
     }    
     
     body{
-        background-color: rgb(199, 197, 197);
+        background-color: rgb(212, 209, 209);
         padding: 0px;
+    }
+
+    #main-heading-div{
+        width: 100%;
+        height: 7vh;
+    }
+
+    #input-output-div{
+        width: 100%;
+        height: 65vh;
+        padding-top: 5px;
+    }
+
+    #img-logo-developer-div{
+        width: 100%;
+        height: 23vh;
     }
 
     h2{
         font-weight: bold;
+        font-family: Arial, sans-serif;
         text-align: center;
         margin: 0px;
         color: red;
@@ -57,6 +74,8 @@
         width: 100px;
         height: 100px;
         margin: 0 auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
         background-image: url(logo.png);
         background-size: cover;
     }
@@ -64,90 +83,91 @@
     </style>
 </head>
 <body>
-<center>
-    <h2>P.S Jewellers</h2>
-    <p>( Upera Wale )</p>
-</center>
-    <hr><hr>
-    <div id="input-div">
-        <table width="100%" cellspacing="5px" cellpadding="2px">
-            <tr>
-                <td width="50%">Amount</td>
-                <td><input type="number" placeholder=" Initial Amount" width="100%" oninput="camount()" id="camount"></td>
-            </tr>
-            <tr>
-                <td width="50%">Rate</td>
-                <td><input type="number" placeholder=" Interest Rate" width="100%" oninput="crate()" id="crate"></td>
-            </tr>
-            <tr>
-                <td width="50%">Entry Date</td>
-                <td><input type="date" style="width: 100%" oninput="centry()" id="centry"></td>
-            </tr>
-            <tr>
-                <td width="50%">Exit Date</td>
-                <td><input type="date" style="width: 100%" oninput="cexit()" id="cexit"></td>
-            </tr>
-        </table>
-        <br>
-        <div id="output-div">
-            <table width="100%"> 
-                <tr>
-                    <td width="35%">Initial Amount</td>
-                    <th width="10%">-</th>
-                    <td><span id="oamount"></span></td>
-                </tr>
-                <tr>
-                    <td width="35%">Interest Rate</td>
-                    <th width="10%">-</th>
-                    <td><span id="orate"></span></td>
-                </tr>
-                <tr>
-                    <td width="35%">Entry Date</td>
-                    <th width="10%">-</th>
-                    <td><span id="oentry"></span></td>
-                </tr>
-                <tr>
-                    <td width="35%">Exit Date</td>
-                    <th width="10%">-</th>
-                    <td><span id="oexit"></span></td>
-                </tr>
-                <tr>
-                    <td width="35%">Total Days</td>
-                    <th width="10%">-</th>
-                    <td><span id="odays"></span></td>
-                </tr>
-                <tr>
-                    <td width="35%">Total Interest</td>
-                    <th width="10%">-</th>
-                    <td><span id="oti"></span></td>
-                </tr>
-                <tr>
-                    <td width="35%">Final Amount</td>
-                    <th width="10%">-</th>
-                    <td><span id="ofa"></span></td>
-                </tr>
-            </table>
+    <div id="main-heading-div">
+        <center>
+            <h2>P.S Jewellers</h2>
+            <p>(Upera Wale)</p>
+        </center>
+    </div>
+
+    <div id="input-output-div">
+            <hr><hr>
+            <div id="input-div">
+                <table width="100%" cellspacing="5px" cellpadding="2px">
+                    <tr>
+                        <td width="50%">Amount</td>
+                        <td><input type="number" placeholder=" Initial Amount" width="100%" oninput="camount()" id="camount"></td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Rate</td>
+                        <td><input type="number" placeholder=" Interest Rate" width="100%" oninput="crate()" id="crate"></td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Entry Date</td>
+                        <td><input type="date" style="width: 100%" oninput="centry()" id="centry"></td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Exit Date</td>
+                        <td><input type="date" style="width: 100%" oninput="cexit()" id="cexit"></td>
+                    </tr>
+                </table>
+                <br>
+                <div id="output-div">
+                    <table width="100%"> 
+                        <tr>
+                            <td width="35%">Initial Amount</td>
+                            <th width="10%">-</th>
+                            <td><span id="oamount"></span></td>
+                        </tr>
+                        <tr>
+                            <td width="35%">Interest Rate</td>
+                            <th width="10%">-</th>
+                            <td><span id="orate"></span></td>
+                        </tr>
+                        <tr>
+                            <td width="35%">Entry Date</td>
+                            <th width="10%">-</th>
+                            <td><span id="oentry"></span></td>
+                        </tr>
+                        <tr>
+                            <td width="35%">Exit Date</td>
+                            <th width="10%">-</th>
+                            <td><span id="oexit"></span></td>
+                        </tr>
+                        <tr>
+                            <td width="35%">Total Days</td>
+                            <th width="10%">-</th>
+                            <td><span id="odays"></span></td>
+                        </tr>
+                        <tr>
+                            <td width="35%">Total Interest</td>
+                            <th width="10%">-</th>
+                            <td><span id="oti"></span></td>
+                        </tr>
+                        <tr>
+                            <td width="35%">Final Amount</td>
+                            <th width="10%">-</th>
+                            <td><span id="ofa"></span></td>
+                        </tr>
+                    </table>
+                </div>
+        
+        
+                <div style="width: fit-content; margin: 0 auto; padding:5px">
+                    <button id="calc-btn" onclick="final_calculate();">Calculate</button>
+                    <button id="clear-btn" onclick="location.reload();">Clear</button>
+                </div>
         </div>
-   
+    </div>
+    <div id="img-logo-developer-div">
+        <hr><hr>
+        <div id="logo-img">
 
-        <div style="width: fit-content; margin: 0 auto; padding:5px">
-            <button id="calc-btn" onclick="final_calculate();">Calculate</button>
-            <button id="clear-btn" onclick="location.reload();">Clear</button>
         </div>
-
-    
-
+        <div style="width: fit-content; margin: 0 auto;">
+            Developed By :- <b><font color="red" size="3px">Mayank Khurmai</font></b>
+        </div>
     </div>
-    <hr><hr>
-    <div id="logo-img">
-
-    </div>
-    <hr>
-    <div style="width: fit-content; margin: 0 auto;">
-        Developed By :- <b><font color="red" size="3px">Mayank Khurmai</font></b>
-    </div>
-    <hr>
-
     
 
     <script>
