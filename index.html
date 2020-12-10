@@ -190,7 +190,7 @@
             // Get Difference Between Dates
             var diff = (Math.floor((Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) - Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()) ) /(1000 * 60 * 60 * 24)))+1;
             
-            diff =  1096;
+            diff =  1825;
 
             // Calculating According to Year and Date
             if(diff>0 && diff<=30)
@@ -239,7 +239,36 @@
                 var i3 = (((p+i1+i2)/100)*(r)*diff)/30;      // For 3rd Year
                 document.getElementById("oti").innerHTML = (i1+i2+i3).toFixed(2);
                 document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3)).toFixed(2);
-            }  
+            }
+            else if(diff>1095 && diff<=1460)
+            {
+                diff = diff-1095;
+                document.getElementById("odays").innerHTML = "3 Year " + diff + " Days";
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
+
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
+                var i3 = (((p+i1+i2)/100)*(r)*365)/30;      // For 3rd Year
+                var i4 = (((p+i1+i2+i3)/100)*(r)*diff)/30;      // For 4th Year
+                document.getElementById("oti").innerHTML = (i1+i2+i3+i4).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3+i4)).toFixed(2);
+            }
+            else if(diff>1460 && diff<=1825)
+            {
+                diff = diff-1460;
+                document.getElementById("odays").innerHTML = "4 Year " + diff + " Days";
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
+
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
+                var i3 = (((p+i1+i2)/100)*(r)*365)/30;      // For 3rd Year
+                var i4 = (((p+i1+i2+i3)/100)*(r)*365)/30;      // For 4th Year
+                var i5 = (((p+i1+i2+i3+i4)/100)*(r)*diff)/30;      // For 4th Year
+                document.getElementById("oti").innerHTML = (i1+i2+i3+i4+i5).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3+i4+i5)).toFixed(2);
+            }      
             else
             {
                 document.getElementById("oti").innerHTML = "Limit Over";   
