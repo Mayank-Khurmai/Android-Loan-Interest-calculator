@@ -190,7 +190,7 @@
             // Get Difference Between Dates
             var diff = (Math.floor((Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) - Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()) ) /(1000 * 60 * 60 * 24)))+1;
             
-            diff = 730;
+            diff = 31 ;
 
             // Calculating According to Year and Date
             if(diff>0 && diff<=30)
@@ -201,8 +201,8 @@
 
                 var i = ((p/100)*(r)*30)/30;
 
-                document.getElementById("oti").innerHTML = i;
-                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
+                document.getElementById("oti").innerHTML = i.toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i)).toFixed(2);
             }
             else if(diff>30 && diff<=365)
             {
@@ -212,8 +212,8 @@
 
                 var i = ((p/100)*(r)*diff)/30;
 
-                document.getElementById("oti").innerHTML = i;
-                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i));
+                document.getElementById("oti").innerHTML = i.toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i)).toFixed(2);
             }
             else if(diff>365 && diff<=730)
             {
@@ -224,8 +224,8 @@
 
                 var i = ((p/100)*(r)*365)/30;       // For 1 Year
                 var fi = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
-                document.getElementById("oti").innerHTML = Math.floor(i+fi);;
-                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i + fi));
+                document.getElementById("oti").innerHTML = (i+fi).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i + fi)).toFixed(2);
             }
             else if(diff>730 && diff<=1095)
             {
@@ -236,8 +236,8 @@
 
                 var i = ((p/100)*(r)*365)/30;       // For 1 Year
                 var fi = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
-                document.getElementById("oti").innerHTML = Math.floor(i+fi);
-                document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i + fi));
+                document.getElementById("oti").innerHTML = (i+fi).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i + fi)).toFixed(2);
             }  
             else
             {
