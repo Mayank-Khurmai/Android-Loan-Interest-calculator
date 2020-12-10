@@ -73,11 +73,11 @@
         <table width="100%" cellspacing="5px" cellpadding="2px">
             <tr>
                 <td width="50%">Amount</td>
-                <td><input type="number" placeholder=" Initial Amount" width="100%" oninput="camount()" id="camount" value="2500"></td>
+                <td><input type="number" placeholder=" Initial Amount" width="100%" oninput="camount()" id="camount"></td>
             </tr>
             <tr>
                 <td width="50%">Rate</td>
-                <td><input type="number" placeholder=" Interest Rate" width="100%" oninput="crate()" id="crate" value="3"></td>
+                <td><input type="number" placeholder=" Interest Rate" width="100%" oninput="crate()" id="crate"></td>
             </tr>
             <tr>
                 <td width="50%">Entry Date</td>
@@ -131,7 +131,7 @@
    
 
         <div style="width: fit-content; margin: 0 auto; padding:5px">
-            <button id="calc-btn" onclick="final_calculate();">Calculate</button>
+            <button id="calc-btn" onclick="final_calculate_check();">Calculate</button>
             <button id="clear-btn" onclick="location.reload();">Clear</button>
         </div>
 
@@ -190,8 +190,6 @@
             // Get Difference Between Dates
             var diff = (Math.floor((Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) - Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()) ) /(1000 * 60 * 60 * 24)))+1;
             
-            diff =  1825;
-
             // Calculating According to Year and Date
             if(diff>0 && diff<=30)
             {
@@ -265,15 +263,132 @@
                 var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
                 var i3 = (((p+i1+i2)/100)*(r)*365)/30;      // For 3rd Year
                 var i4 = (((p+i1+i2+i3)/100)*(r)*365)/30;      // For 4th Year
-                var i5 = (((p+i1+i2+i3+i4)/100)*(r)*diff)/30;      // For 4th Year
+                var i5 = (((p+i1+i2+i3+i4)/100)*(r)*diff)/30;      // For 5th Year
                 document.getElementById("oti").innerHTML = (i1+i2+i3+i4+i5).toFixed(2);
                 document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3+i4+i5)).toFixed(2);
-            }      
+            } 
+            else if(diff>1825 && diff<=2190)
+            {
+                diff = diff-1825;
+                document.getElementById("odays").innerHTML = "5 Year " + diff + " Days";
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
+
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
+                var i3 = (((p+i1+i2)/100)*(r)*365)/30;      // For 3rd Year
+                var i4 = (((p+i1+i2+i3)/100)*(r)*365)/30;      // For 4th Year
+                var i5 = (((p+i1+i2+i3+i4)/100)*(r)*365)/30;      // For 5th Year
+                var i6 = (((p+i1+i2+i3+i4+i5)/100)*(r)*diff)/30;      // For 6th Year
+                document.getElementById("oti").innerHTML = (i1+i2+i3+i4+i5+i6).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3+i4+i5+i6)).toFixed(2);
+            }
+            else if(diff>2190 && diff<=2555)
+            {
+                diff = diff-2190;
+                document.getElementById("odays").innerHTML = "6 Year " + diff + " Days";
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
+
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
+                var i3 = (((p+i1+i2)/100)*(r)*365)/30;      // For 3rd Year
+                var i4 = (((p+i1+i2+i3)/100)*(r)*365)/30;      // For 4th Year
+                var i5 = (((p+i1+i2+i3+i4)/100)*(r)*365)/30;      // For 5th Year
+                var i6 = (((p+i1+i2+i3+i4+i5)/100)*(r)*365)/30;      // For 6th Year
+                var i7 = (((p+i1+i2+i3+i4+i5+i6)/100)*(r)*diff)/30;      // For 7th Year
+                document.getElementById("oti").innerHTML = (i1+i2+i3+i4+i5+i6+i7).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3+i4+i5+i6+i7)).toFixed(2);
+            } 
+            else if(diff>2555 && diff<=2920)
+            {
+                diff = diff-2555;
+                document.getElementById("odays").innerHTML = "7 Year " + diff + " Days";
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
+
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
+                var i3 = (((p+i1+i2)/100)*(r)*365)/30;      // For 3rd Year
+                var i4 = (((p+i1+i2+i3)/100)*(r)*365)/30;      // For 4th Year
+                var i5 = (((p+i1+i2+i3+i4)/100)*(r)*365)/30;      // For 5th Year
+                var i6 = (((p+i1+i2+i3+i4+i5)/100)*(r)*365)/30;      // For 6th Year
+                var i7 = (((p+i1+i2+i3+i4+i5+i6)/100)*(r)*365)/30;      // For 7th Year
+                var i8 = (((p+i1+i2+i3+i4+i5+i6+i7)/100)*(r)*diff)/30;      // For 8th Year
+                document.getElementById("oti").innerHTML = (i1+i2+i3+i4+i5+i6+i7+i8).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3+i4+i5+i6+i7+i8)).toFixed(2);
+            }  
+            else if(diff>2920 && diff<=3285)
+            {
+                diff = diff-2920;
+                document.getElementById("odays").innerHTML = "8 Year " + diff + " Days";
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
+
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
+                var i3 = (((p+i1+i2)/100)*(r)*365)/30;      // For 3rd Year
+                var i4 = (((p+i1+i2+i3)/100)*(r)*365)/30;      // For 4th Year
+                var i5 = (((p+i1+i2+i3+i4)/100)*(r)*365)/30;      // For 5th Year
+                var i6 = (((p+i1+i2+i3+i4+i5)/100)*(r)*365)/30;      // For 6th Year
+                var i7 = (((p+i1+i2+i3+i4+i5+i6)/100)*(r)*365)/30;      // For 7th Year
+                var i8 = (((p+i1+i2+i3+i4+i5+i6+i7)/100)*(r)*365)/30;      // For 8th Year
+                var i9 = (((p+i1+i2+i3+i4+i5+i6+i7+i8)/100)*(r)*diff)/30;      // For 9th Year
+                document.getElementById("oti").innerHTML = (i1+i2+i3+i4+i5+i6+i7+i8+i9).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3+i4+i5+i6+i7+i8+i9)).toFixed(2);
+            }    
+            else if(diff>3285 && diff<=3650)
+            {
+                diff = diff-3285;
+                document.getElementById("odays").innerHTML = "9 Year " + diff + " Days";
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
+
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
+                var i3 = (((p+i1+i2)/100)*(r)*365)/30;      // For 3rd Year
+                var i4 = (((p+i1+i2+i3)/100)*(r)*365)/30;      // For 4th Year
+                var i5 = (((p+i1+i2+i3+i4)/100)*(r)*365)/30;      // For 5th Year
+                var i6 = (((p+i1+i2+i3+i4+i5)/100)*(r)*365)/30;      // For 6th Year
+                var i7 = (((p+i1+i2+i3+i4+i5+i6)/100)*(r)*365)/30;      // For 7th Year
+                var i8 = (((p+i1+i2+i3+i4+i5+i6+i7)/100)*(r)*365)/30;      // For 8th Year
+                var i9 = (((p+i1+i2+i3+i4+i5+i6+i7+i8)/100)*(r)*365)/30;      // For 9th Year
+                var i10 = (((p+i1+i2+i3+i4+i5+i6+i7+i8+i9)/100)*(r)*diff)/30;      // For 10th Year
+                document.getElementById("oti").innerHTML = (i1+i2+i3+i4+i5+i6+i7+i8+i9+i10).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3+i4+i5+i6+i7+i8+i9+i10)).toFixed(2);
+            }              
             else
             {
-                document.getElementById("oti").innerHTML = "Limit Over";   
+                diff = diff-3650;
+                document.getElementById("odays").innerHTML = "10 Year " + diff + " Days" + " (<font color='red'>Exceed</font>)";
+                var p = Number(document.getElementById("camount").value);
+                var r = Number(document.getElementById("crate").value);
+
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
+                var i3 = (((p+i1+i2)/100)*(r)*365)/30;      // For 3rd Year
+                var i4 = (((p+i1+i2+i3)/100)*(r)*365)/30;      // For 4th Year
+                var i5 = (((p+i1+i2+i3+i4)/100)*(r)*365)/30;      // For 5th Year
+                var i6 = (((p+i1+i2+i3+i4+i5)/100)*(r)*365)/30;      // For 6th Year
+                var i7 = (((p+i1+i2+i3+i4+i5+i6)/100)*(r)*365)/30;      // For 7th Year
+                var i8 = (((p+i1+i2+i3+i4+i5+i6+i7)/100)*(r)*365)/30;      // For 8th Year
+                var i9 = (((p+i1+i2+i3+i4+i5+i6+i7+i8)/100)*(r)*365)/30;      // For 9th Year
+                var i10 = (((p+i1+i2+i3+i4+i5+i6+i7+i8+i9)/100)*(r)*365)/30;      // For 10th Year
+                var i11 = (((p+i1+i2+i3+i4+i5+i6+i7+i8+i9+i10)/100)*(r)*diff)/30;      // For 11th Year
+                document.getElementById("oti").innerHTML = (i1+i2+i3+i4+i5+i6+i7+i8+i9+i10+i11).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3+i4+i5+i6+i7+i8+i9+i10+i11)).toFixed(2);  
             }       
             
+        }
+
+
+
+        function final_calculate_check()
+        {
+            if(Number(document.getElementById("camount").value) !="" && Number(document.getElementById("crate").value) !="")
+            {
+                final_calculate();
+            }
         }
     
     </script>
