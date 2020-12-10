@@ -224,10 +224,10 @@
 
                 var i = ((p/100)*(r)*365)/30;       // For 1 Year
                 var fi = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
-                document.getElementById("oti").innerHTML = Math.floor(i+fi);
+                document.getElementById("oti").innerHTML = Math.floor(i+fi);;
                 document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i + fi));
             }
-            else
+            else if(diff>730 && diff<=1095)
             {
                 diff = diff-365;
                 document.getElementById("odays").innerHTML = "1 Year " + diff + " Days";
@@ -238,7 +238,11 @@
                 var fi = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
                 document.getElementById("oti").innerHTML = Math.floor(i+fi);
                 document.getElementById("ofa").innerHTML = Math.floor(Number(p) + Number(i + fi));
-            }         
+            }  
+            else
+            {
+                document.getElementById("oti").innerHTML = "Limit Over";   
+            }       
             
         }
     
