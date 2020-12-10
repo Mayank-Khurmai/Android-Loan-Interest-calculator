@@ -190,7 +190,7 @@
             // Get Difference Between Dates
             var diff = (Math.floor((Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()) - Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()) ) /(1000 * 60 * 60 * 24)))+1;
             
-            diff = 31 ;
+            diff =  1096;
 
             // Calculating According to Year and Date
             if(diff>0 && diff<=30)
@@ -199,10 +199,10 @@
                 var p = document.getElementById("camount").value;
                 var r = document.getElementById("crate").value;
 
-                var i = ((p/100)*(r)*30)/30;
+                var i1 = ((p/100)*(r)*30)/30;
 
-                document.getElementById("oti").innerHTML = i.toFixed(2);
-                document.getElementById("ofa").innerHTML = (Number(p) + Number(i)).toFixed(2);
+                document.getElementById("oti").innerHTML = i1.toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1)).toFixed(2);
             }
             else if(diff>30 && diff<=365)
             {
@@ -210,10 +210,10 @@
                 var p = document.getElementById("camount").value;
                 var r = document.getElementById("crate").value;
 
-                var i = ((p/100)*(r)*diff)/30;
+                var i1 = ((p/100)*(r)*diff)/30;         // For 1st Year
 
-                document.getElementById("oti").innerHTML = i.toFixed(2);
-                document.getElementById("ofa").innerHTML = (Number(p) + Number(i)).toFixed(2);
+                document.getElementById("oti").innerHTML = i1.toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1)).toFixed(2);
             }
             else if(diff>365 && diff<=730)
             {
@@ -222,22 +222,23 @@
                 var p = Number(document.getElementById("camount").value);
                 var r = Number(document.getElementById("crate").value);
 
-                var i = ((p/100)*(r)*365)/30;       // For 1 Year
-                var fi = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
-                document.getElementById("oti").innerHTML = (i+fi).toFixed(2);
-                document.getElementById("ofa").innerHTML = (Number(p) + Number(i + fi)).toFixed(2);
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*diff)/30;      // For 2nd Year
+                document.getElementById("oti").innerHTML = (i1+i2).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1 + i2)).toFixed(2);
             }
             else if(diff>730 && diff<=1095)
             {
-                diff = diff-365;
-                document.getElementById("odays").innerHTML = "1 Year " + diff + " Days";
+                diff = diff-730;
+                document.getElementById("odays").innerHTML = "2 Year " + diff + " Days";
                 var p = Number(document.getElementById("camount").value);
                 var r = Number(document.getElementById("crate").value);
 
-                var i = ((p/100)*(r)*365)/30;       // For 1 Year
-                var fi = (((p+i)/100)*(r)*diff)/30;      // For 2 Year
-                document.getElementById("oti").innerHTML = (i+fi).toFixed(2);
-                document.getElementById("ofa").innerHTML = (Number(p) + Number(i + fi)).toFixed(2);
+                var i1 = ((p/100)*(r)*365)/30;       // For 1st Year
+                var i2 = (((p+i1)/100)*(r)*365)/30;      // For 2nd Year
+                var i3 = (((p+i1+i2)/100)*(r)*diff)/30;      // For 3rd Year
+                document.getElementById("oti").innerHTML = (i1+i2+i3).toFixed(2);
+                document.getElementById("ofa").innerHTML = (Number(p) + Number(i1+i2+i3)).toFixed(2);
             }  
             else
             {
