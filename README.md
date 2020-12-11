@@ -7,4 +7,4 @@ Android-Loan-Interest-calculator
 Mayank Kumar Khurmai   
 
 
-![Test Image 4](https://github.com/Mayank-Khurmai/Android-Loan-Interest-calculator/blob/master/Screenshot%20(40).png)
+![Test Image 4](https://github.com/Mayank-Khurmai/Android-Loan-Interest-calculator/blob/master/Screenshot%20(400).png)
