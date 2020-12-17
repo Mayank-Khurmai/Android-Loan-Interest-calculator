@@ -1,7 +1,7 @@
 # Android-Loan-Interest-calculator
 Android-Loan-Interest-calculator
 
---Available on Store
+--Available on App Store
 ---------By--------
 
 Mayank Kumar Khurmai   
